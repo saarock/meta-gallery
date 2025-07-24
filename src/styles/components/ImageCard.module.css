@@ -1,0 +1,49 @@
+/* Image card styles */
+
+.img_card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+  height: 200px;
+  background-color: #fff;
+}
+
+.img_card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+}
+
+.img_card :global(img) {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+  border-radius: 16px;
+}
+
+.img_card:hover :global(img) {
+  transform: scale(1.1);
+}
+
+.overlay_bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 80%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0 0 16px 16px;
+}
+
+.img_card:hover .overlay_bottom {
+  opacity: 1;
+}

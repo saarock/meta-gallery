@@ -1,0 +1,6 @@
+.image_details_with_meta_data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
