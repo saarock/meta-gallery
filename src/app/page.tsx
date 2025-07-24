@@ -84,7 +84,7 @@ const Home = () => {
     <div className="flex items-center content-center flex-col">
       <Filter onSortChange={onOrderChange} />
       {loading ? (
-        <Loading />
+       <p> <Loading />Loading...</p>
       ) : (
         <div className={`${homeStyle.images}`}>
           {images.map((currentImageData) => (
