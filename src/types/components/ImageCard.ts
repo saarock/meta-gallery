@@ -4,4 +4,5 @@ export interface ImageCardProps {
   alt: string; // alt for the image
   title: string; // Image name
   id: string| number // id of the image
+  onClick: () => void;
 }

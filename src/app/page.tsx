@@ -7,6 +7,7 @@ import { galleryData } from "@/data";
 import { Filter, Loading } from "@/components";
 import homeStyle from "../styles/app/Home.module.css";
 import { ImageWithDate, Order } from "@/types/app/HomeTypes";
+import { useNavigation } from "@/hooks";
 
 
 const Home = () => {
@@ -76,6 +77,9 @@ const Home = () => {
     })();
   }, [sortOrder, sortImages]);
 
+  const { showImageDetails } = useNavigation();
+
+
   return (
     <div className="flex items-center content-center flex-col">
       <Filter onSortChange={onOrderChange} />
@@ -90,6 +94,8 @@ const Home = () => {
               title={currentImageData.title}
               key={currentImageData.id}
               id={currentImageData.id}
+              onClick={() => showImageDetails(currentImageData.id.toString())}
+            
             />
           ))}
         </div>
