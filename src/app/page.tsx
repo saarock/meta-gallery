@@ -8,7 +8,7 @@ import { Filter, Loading } from "@/components";
 import homeStyle from "../styles/app/Home.module.css";
 import { ImageWithDate, Order } from "@/types/app/HomeTypes";
 import { useNavigation } from "@/hooks";
-
+import { ImageService } from "@/services";
 
 const Home = () => {
   // Useful hooks
@@ -21,7 +21,10 @@ const Home = () => {
 
     for (const image of galleryData) {
       try {
-        const res = await fetch(image.src);
+        const res = await ImageService.fetchImage(image.src);
+        if (!res) {
+          throw new Error("No response found");
+        }
         const blob = await res.blob();
         const metadata = await exifr.parse(blob);
 
@@ -41,6 +44,7 @@ const Home = () => {
         });
       } catch (err) {
         console.error(`Failed to load metadata for ${image.src}`, err);
+        alert(err instanceof Error ? err.message : "Failed to fetch the Image");
         results.push({
           ...image,
           dateTaken: undefined,
@@ -79,12 +83,15 @@ const Home = () => {
 
   const { showImageDetails } = useNavigation();
 
-
   return (
     <div className="flex items-center content-center flex-col">
       <Filter onSortChange={onOrderChange} />
       {loading ? (
-       <p> <Loading />Loading...</p>
+        <p>
+          {" "}
+          <Loading />
+          Loading...
+        </p>
       ) : (
         <div className={`${homeStyle.images}`}>
           {images.map((currentImageData) => (
@@ -95,7 +102,6 @@ const Home = () => {
               key={currentImageData.id}
               id={currentImageData.id}
               onClick={() => showImageDetails(currentImageData.id.toString())}
-            
             />
           ))}
         </div>
