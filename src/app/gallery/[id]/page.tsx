@@ -110,7 +110,7 @@ function ImageDisplay({ alt, src, title }: GallaryDataTypes) {
   return (
     <>
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
-      <img src={src} alt={alt} width={900} height={400} />
+      <img src={src} alt={alt} width={700} height={400} />
     </>
   );
 }

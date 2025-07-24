@@ -6,16 +6,8 @@ import ImageCard from "@/components/ImageCard/ImageCard";
 import { galleryData } from "@/data";
 import { Filter, Loading } from "@/components";
 import homeStyle from "../styles/app/Home.module.css";
+import { ImageWithDate, Order } from "@/types/app/HomeTypes";
 
-type Order = "asc" | "desc";
-
-interface ImageWithDate {
-  id: number;
-  src: string;
-  alt: string;
-  title: string;
-  dateTaken?: string;
-}
 
 const Home = () => {
   // Useful hooks
