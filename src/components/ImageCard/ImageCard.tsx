@@ -20,10 +20,11 @@ import { useNavigation } from "@/hooks";
  *
  * @returns {JSX.Element} A styled image component with hover overlay.
  */
-const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, id }) => {
+const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, id, onClick }) => {
   return (
     <div
       className={imageCardStyles.img_card}
+      onClick={onClick}
     >
       <Image src={src} alt={alt} height={200} width={200} loading="lazy"/>
       <div className={imageCardStyles.overlay_bottom}>
